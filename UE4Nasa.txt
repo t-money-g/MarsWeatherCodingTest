@@ -1,0 +1,24 @@
+Imagine we’re making a mars colony simulation game. (We’re not :D) In order to add some elements of reality, we want to pull real-time weather data from Nasa. In UE4, Create a system that pulls that data from https://api.nasa.gov/ - InSight: Mars Weather Service API. The system should then make the weather data available to other systems including the ability to smoothly interpolate between values based on a passed in time stamp. If you need something else to make the system work call out your solutions.
+
+
+ 
+Supplying visual feedback:
+
+Should I supply some kind of visual indication for changeing of the weather data locally? I'm thinking a simple actor component with a few color varations that loosely map to the weather data. These colors would just be there for debugging and would help test that interpolation code is running.  
+Example: 
+Air Temp could range from (0 to Red)
+Pressure could range from (0 to Green)
+Wind Speed could range from (0 to Blue) 
+
+I'm assuming that I should allow timestamps in UTC format, so how far back in time from the current day should users be allowed to start from, or should it be free form? 
+
+
+Should the weather data be stored locally (disk, database)? 
+Should I allow for saving snapshots of weather data given a range of timestamp (start and end). 
+Should I provide a paramterter for time scaling to allow users to test long weather changes overtime (week, month?)
+
+Other things I'm thinking about: 
+If the weather data can be changed locally. How many parameters are allowed to be modified? What makes sense? 
+There is an atmosphere component in UE4, but it's pretty involved, I'll take a look at it but I don't think I'll use too much from it maybe inspiration for editor properties I want to expose. 
+For API calls, I'll use UE4s built in Http, Json and JsonUtilities modules. 
+
